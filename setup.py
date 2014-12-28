@@ -8,4 +8,5 @@ setup(name='pystructures',
       author_email='apranav19@gmail.com',
       license='MIT',
       packages=['pystructures'],
+      install_requires=['future'],
       zip_safe=False)
