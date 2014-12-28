@@ -7,5 +7,5 @@ setup(name='pystructures',
       author='Pranav Angara',
       author_email='apranav19@gmail.com',
       license='MIT',
-      packages=find_packages(exclude=['tests*']),
+      packages=['pystructures'],
       zip_safe=False)

@@ -1,1 +1,1 @@
-from pystructures import linked_lists
+from .linked_lists import LinkedList, Node
