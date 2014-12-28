@@ -1,3 +1,4 @@
+from builtins import range
 from unittest import TestCase
 from pystructures.linked_lists import LinkedList, Node
 
@@ -18,7 +19,7 @@ class TestLinkedList(TestCase):
 	def test_insert(self):
 		""" A simple test to check if insertion works as expected in a singly linked list """
 		l = LinkedList()
-		results = [l.insert(val) for val in xrange(10, 100, 10)]
+		results = [l.insert(val) for val in range(10, 100, 10)]
 		self.assertEqual(len(set(results)), 1)
 		self.assertTrue(results[0], msg="Testing for successful insertion...")
 		self.assertEqual(len(results), l.size, msg="Testing if # of results equal list size...")
