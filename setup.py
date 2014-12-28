@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(name='pystructures',
       version='0.0.1',
@@ -7,5 +7,5 @@ setup(name='pystructures',
       author='Pranav Angara',
       author_email='apranav19@gmail.com',
       license='MIT',
-      packages=find_packages(exclude=['tests*', ''],
+      packages=find_packages(exclude=['tests*']),
       zip_safe=False)
