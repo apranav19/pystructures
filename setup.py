@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='pystructures',
-      version='0.0.1',
+      version='0.0.2',
       description='Data Structures made simple',
       url='http://github.com/apranav19/pystructures',
       author='Pranav Angara',
