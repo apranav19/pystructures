@@ -15,34 +15,67 @@ class Node(object):
         next: The pointer to the next Node
     """
     def __init__(self, value):
-        self.__value = value
-        self.__next = None
+        self._value = value
+        self._next = None
 
     @property
     def value(self):
         """ Returns the value of the Node """
-        return self.__value
+        return self._value
 
     @value.setter
     def value(self, value):
         """ Sets the value of the Node """
-        self.__value = value
+        self._value = value
 
     @property
     def next(self):
         """ Returns the next Node """
-        return self.__next
+        return self._next
 
     @next.setter
     def next(self, node):
         """ Sets the pointer to the next Node """
         if node == None or isinstance(node, Node):
-            self.__next = node
+            self._next = node
         else:
             raise ValueError("cannot set next to a " + str(type(node)))
 
     def __str__(self):
-        return str(self.__value)
+        return str(self._value)
+
+class DoublyLinkedNode(Node):
+    """
+        This class represents a doubly linked Node
+    """
+    def __init__(self, value):
+        super(DoublyLinkedNode, self).__init__(value)
+        self.__previous = None
+
+    @property
+    def next(self):
+        return self._next
+    
+    @property
+    def previous(self):
+        """ Returns the previous Node """
+        return self.__previous
+
+    @previous.setter
+    def previous(self, node):
+        """ Sets the pointer to the previous Node """
+        if node == None or isinstance(node, DoublyLinkedNode):
+            self.__previous = node
+        else:
+            raise ValueError("Cannot set previous to a " + str(type(DoublyLinkedNode)))
+
+    @next.setter
+    def next(self, node):
+        """ Sets the pointer to the previous Node """
+        if node == None or isinstance(node, DoublyLinkedNode):
+            self._next = node
+        else:
+            raise ValueError("Cannot set next to a " + str(type(DoublyLinkedNode)))    
 
 class AbstractList(with_metaclass(ABCMeta, object)):
     """ An abstract definition of an unordered list """
@@ -145,4 +178,32 @@ class LinkedList(AbstractList):
             output.append("EOL")
             res = " -> ".join(list(map(str, output)))
             return res
+
+class DoublyLinkedList(LinkedList):
+    """
+        A concrete implementation of a doubly linked list
+    """
+    def __init__(self):
+        super(DoublyLinkedList, self).__init__()
+        self.tail = None
+
+    def insert(self, item):
+        """
+            Given an item, this function will insert a new node to the current head.
+        """
+        if not item or isinstance(item, DoublyLinkedNode):
+            raise ValueError("Cannot insert a None or a Node type")
+
+        if self.head == None:
+            self.head = DoublyLinkedNode(item)
+            self.tail = self.head
+        else:
+            node = DoublyLinkedNode(item)
+            node.next = self.head
+            self.head.previous = node
+            self.head = node
+
+        self.size += 1
+        return True
+            
 
