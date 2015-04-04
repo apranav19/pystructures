@@ -205,5 +205,22 @@ class DoublyLinkedList(LinkedList):
 
         self.size += 1
         return True
-            
+
+    def append(self, item):
+        """
+            Given an item, this function will append it to the tail
+        """
+        if not item or isinstance(item, DoublyLinkedNode):
+            raise ValueError("Cannot insert a None or a Node type")
+
+        if self.tail == None:
+            return self.insert(item) # Simply call insert()
+        else:
+            node = DoublyLinkedNode(item)
+            node.previous, self.tail.next = self.tail, node
+            self.tail = node
+
+        self.size += 1
+        return True
+
 

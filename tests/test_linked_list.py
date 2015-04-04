@@ -39,3 +39,16 @@ class TestDoublyLinkedList(TestCase):
         self.assertEqual(dl.head.value, "B")
         self.assertEqual(dl.tail.value, "A")
         self.assertEqual(dl.tail.previous.value, "B")
+
+    def test_append(self):
+        """ A test to check the various states of the DoublyLinkedList when insertion at the tail is performed """
+        dl = DoublyLinkedList()
+        dl.append("A")
+
+        self.assertEqual(dl.tail.value, "A")
+
+        dl.insert("B")
+        dl.append("C")
+
+        self.assertEqual(dl.tail.value, "C")
+        self.assertEqual(dl.tail.previous.value, "A")
