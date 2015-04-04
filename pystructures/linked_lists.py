@@ -164,7 +164,20 @@ class LinkedList(AbstractList):
         return True
 
     def remove(self, item):
-        pass
+        """ Removes an item if it exists in the list """
+        if self.contains(item):
+        	current, prev = self.head, None
+
+        	while current.value != item:
+        		prev, current = current, current.next
+
+    		if current == self.head:
+    			self.head = current.next
+    		else:
+    			prev.next = current.next
+
+			current.next = None
+			return current
 
     def __str__(self):
         """ Prints content in a linear structure """
@@ -222,5 +235,6 @@ class DoublyLinkedList(LinkedList):
 
         self.size += 1
         return True
+
 
 
